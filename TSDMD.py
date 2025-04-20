@@ -44,9 +44,9 @@ async def load_config():
     if os.path.exists(SETTINGS_FILE):
         async with aiofiles.open(SETTINGS_FILE, mode="r") as file:
             settings = json.loads(await file.read())
-        api_id = settings.get("api_id")
-        api_hash = settings.get("api_hash")
-        admin_id = settings.get("admin_id")
+        api_id = os.getenv("api_id")
+        api_hash = os.getenv("api_hash")
+        admin_id = os.getenv("admin_id")
 
         if not admin_id:
             admin_id = input("Enter the Admin ID: ")
